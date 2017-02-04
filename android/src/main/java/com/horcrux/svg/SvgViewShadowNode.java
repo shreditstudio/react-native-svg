@@ -100,7 +100,11 @@ public class SvgViewShadowNode extends LayoutShadowNode {
     @Override
     public void onCollectExtraUpdates(UIViewOperationQueue uiUpdater) {
         super.onCollectExtraUpdates(uiUpdater);
-        uiUpdater.enqueueUpdateExtraData(getReactTag(), drawOutput());
+        int width = (int) getLayoutWidth();
+        int height = (int) getLayoutHeight();
+        if (width > 0 && height > 0) {
+            uiUpdater.enqueueUpdateExtraData(getReactTag(), drawOutput());
+        }
     }
 
     @Override
